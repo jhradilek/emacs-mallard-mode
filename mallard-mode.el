@@ -7,6 +7,10 @@
 ;; Version: 0.1.0
 ;; Keywords: XML Mallard
 
+;; The schema/mallard-1.0.rnc file has been created by Shaun McCance and
+;; is licensed under a Creative Commons Attribution-ShareAlike 3.0 Unported
+;; License. Refer to http://projectmallard.org/ for more information.
+
 ;; This file is NOT part of GNU Emacs.
 
 ;; This program is free software; you can redistribute it and/or modify
@@ -22,7 +26,9 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-;;; A major mode for editing Mallard files.
+;;; Commentary:
+
+;; A major mode for editing Mallard files.
 
 ;;; Code:
 
