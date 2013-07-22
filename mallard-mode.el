@@ -3,6 +3,7 @@
 ;; Copyright (C) 2013 Jaromir Hradilek
 
 ;; Author: Jaromir Hradilek <jhradilek@gmail.com>
+;; URL: https://github.com/jhradilek/emacs-mallard-mode
 ;; Keywords: XML
 
 ;; This program is free software; you can redistribute it and/or modify
