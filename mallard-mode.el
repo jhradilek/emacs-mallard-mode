@@ -32,8 +32,13 @@
 
 ;;; Code:
 
-(defvar mallard-dir (file-name-directory load-file-name))
-(defvar mallard-schemas (expand-file-name "schema/schemas.xml" mallard-dir))
+(defvar mallard-directory
+  (file-name-directory load-file-name)
+  "The main directory of mallard-mode.")
+
+(defvar mallard-schemas
+  (expand-file-name "schema/schemas.xml" mallard-directory)
+  "The location of the schema locating file for Mallard.")
 
 ;;;###autoload
 (define-derived-mode mallard-mode nxml-mode "Mallard"
@@ -47,7 +52,6 @@
 (progn (add-to-list 'auto-mode-alist '("\\.page\\'" . mallard-mode))
        (add-to-list 'auto-mode-alist '("\\.page\\.stub\\'" . mallard-mode)))
 
-;;;###autoload
 (eval-after-load 'rng-loc
   '(add-to-list 'rng-schema-locating-files mallard-schemas))
 
