@@ -4,7 +4,7 @@
 
 ;; Author: Jaromir Hradilek <jhradilek@gmail.com>
 ;; URL: https://github.com/jhradilek/emacs-mallard-mode
-;; Version: 0.1.0
+;; Version: 0.1.1
 ;; Keywords: XML Mallard
 
 ;; The schema/mallard-1.0.rnc file is licensed by Shaun McCance under the
@@ -32,6 +32,9 @@
 
 ;;; Code:
 
+(defconst mallard-mode-version "0.1.1"
+  "The version of mallard-mode.")
+
 (defvar mallard-directory
   (file-name-directory load-file-name)
   "The main directory of mallard-mode.")
@@ -39,6 +42,11 @@
 (defvar mallard-schemas
   (expand-file-name "schema/schemas.xml" mallard-directory)
   "The location of the schema locating file for Mallard.")
+
+(defun mallard-version ()
+  "Display the current version of mallard-mode in the minibuffer."
+  (interactive)
+  (message "mallard-mode %s" mallard-mode-version))
 
 ;;;###autoload
 (define-derived-mode mallard-mode nxml-mode "Mallard"
