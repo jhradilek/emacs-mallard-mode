@@ -4,7 +4,7 @@
 
 ;; Author: Jaromir Hradilek <jhradilek@gmail.com>
 ;; URL: https://github.com/jhradilek/emacs-mallard-mode
-;; Keywords: XML
+;; Keywords: XML Mallard
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
