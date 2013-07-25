@@ -6,7 +6,9 @@ The **emacs-mallard-mode** repository provides **mallard-mode**, a major mode fo
 
 ## Installation
 
-To install **mallard-mode**, add the following lines to your **~/.emacs.d/init.el** file to enable the Milkypostman's Emacs Lisp Package Archive (MELPA) repository:
+### Installing mallard-mode Using package.el
+
+To install **mallard-mode** by using the package.el package manager for Emacs, add the following lines to your **~/.emacs.d/init.el** file to enable the Milkypostman's Emacs Lisp Package Archive (MELPA) repository:
 
     (require 'package)
     (add-to-list 'package-archives
@@ -19,6 +21,17 @@ Then run the following Emacs commands to install the **mallard-mode** package:
     M-x package-install mallard-mode
 
 Refer to the [GNU Emacs manual](http://www.gnu.org/software/emacs/manual/html_node/emacs/Packages.html) for more information on how to download, install, update, and uninstall packages in this editor.
+
+### Installing mallard-mode Manually
+
+To install **mallard-mode** manually, change to the directory with your local copy of this repository and copy its contents to the **~/.emacs.d/mallard-mode/** directory:
+
+    cp -R . ~/.emacs.d/mallard-mode/
+
+Then add the following lines to your **~/.emacs.d/init.el** file to enable it:
+
+    (add-to-list 'load-path "~/.emacs.d/mallard-mode")
+    (require 'mallard-mode)
 
 ## Usage
 
