@@ -49,6 +49,6 @@ Refer to the [GNU Emacs manual](http://www.gnu.org/software/emacs/manual/html_no
 
 Copyright © 2013 Jaromir Hradilek
 
-The **schema/mallard-1.0.rnc** file is licensed by Shaun McCance under the [Creative Commons Attribution-ShareAlike 3.0 Unported License](http://creativecommons.org/licenses/by-sa/3.0/).
+The **schema/mallard-1.0.rnc** file is licensed by Shaun McCance under the [Creative Commons Attribution-ShareAlike 3.0 Unported License](http://creativecommons.org/licenses/by-sa/3.0/). The remaining files are released under the [GNU General Public License](http://www.gnu.org/licenses/gpl.html) as published by the Free Software Foundation, version 3 of the License.
 
-The remaining files are released under the [GNU General Public License](http://www.gnu.org/licenses/gpl.html) as published by the [Free Software Foundation](http://www.fsf.org/), either version 3 of the License, or (at your option) any later version.
+This program is free software; see the source for copying conditions. It is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
