@@ -7,23 +7,11 @@
 ;; Version: 0.1.1
 ;; Keywords: XML Mallard
 
-;; The schema/mallard-1.0.rnc file is licensed by Shaun McCance under the
-;; Creative Commons Attribution-ShareAlike 3.0 Unported License. Refer to
-;; http://projectmallard.org/ for more information.
-
 ;; This file is NOT part of GNU Emacs.
 
-;; This program is free software; you can redistribute it and/or modify
-;; it under the terms of the GNU General Public License as published by
-;; the Free Software Foundation, version 3 of the License.
-
-;; This program is distributed in the hope that it will be useful,
-;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;; GNU General Public License for more details.
-
-;; You should have received a copy of the GNU General Public License
-;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
+;; This work is licensed under a Creative Commons Attribution-ShareAlike
+;; 3.0 Unported License. For a detailed explanation of this license, see
+;; <http://creativecommons.org/licenses/by-sa/3.0/>.
 
 ;;; Commentary:
 
