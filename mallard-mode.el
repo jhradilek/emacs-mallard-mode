@@ -67,6 +67,17 @@ When BUFFER is not specified or is nil, use the current buffer."
   (interactive)
   (message "mallard-mode %s" mallard-mode-version))
 
+(defun mallard-validate ()
+  "Validate the currently edited Mallard document."
+  (interactive)
+  (message "Validating the current buffer...")
+  (let* ((command (concat mallard-mode-validate-command " " (buffer-file-name)))
+         (output (mallard-run-command-on-buffer command)))
+    (unless (null output)
+      (if (zerop (length output))
+          (message "No validation errors found.")
+        (display-message-or-buffer output mallard-mode-validate-buffer)))))
+
 ;;;###autoload
 (define-derived-mode mallard-mode nxml-mode "Mallard"
   "A major mode for editing Mallard files."
