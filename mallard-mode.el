@@ -27,6 +27,16 @@
   :prefix "mallard-mode-"
   :group 'languages)
 
+(defcustom mallard-mode-status-command "yelp-check status"
+  "The command to display the status of a Mallard document."
+  :type 'string
+  :group 'mallard)
+
+(defcustom mallard-mode-status-buffer "*mallard-status*"
+  "The name of the buffer for the status of a Mallard document."
+  :type 'string
+  :group 'mallard)
+
 (defcustom mallard-mode-validate-command "yelp-check validate"
   "The command to validate a Mallard document."
   :type 'string
@@ -66,6 +76,15 @@ When BUFFER is not specified or is nil, use the current buffer."
   "Display the current version of mallard-mode in the minibuffer."
   (interactive)
   (message "mallard-mode %s" mallard-mode-version))
+
+(defun mallard-status ()
+  "Display the status of the currently edited Mallard document."
+  (interactive)
+  (message "Checking the status of the current buffer...")
+  (let* ((command (concat mallard-mode-status-command " " (buffer-file-name)))
+         (output (mallard-run-command-on-buffer command)))
+    (unless (and (null output) (zerop (length output)))
+      (display-message-or-buffer output mallard-mode-status-buffer))))
 
 (defun mallard-validate ()
   "Validate the currently edited Mallard document."
