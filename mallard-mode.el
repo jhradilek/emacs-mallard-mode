@@ -19,6 +19,8 @@
 
 ;;; Code:
 
+(require 'nxml-mode)
+
 (defconst mallard-mode-version "0.1.1"
   "The version of mallard-mode.")
 
@@ -66,6 +68,17 @@
   "The name of the buffer for validation errors in a Mallard document."
   :type 'string
   :group 'mallard)
+
+(defvar mallard-mode-map
+  (let ((map (make-sparse-keymap)))
+    (set-keymap-parent map nxml-mode-map)
+    (define-key map "\C-c\C-c" 'mallard-comments)
+    (define-key map "\C-c\C-h" 'mallard-hrefs)
+    (define-key map "\C-c\C-s" 'mallard-status)
+    (define-key map "\C-c\C-v" 'mallard-validate)
+    map)
+  "Keymap for mallard-mode.
+All commands in `nxml-mode-map' are inherited by this map.")
 
 (defvar mallard-directory
   (file-name-directory load-file-name)
