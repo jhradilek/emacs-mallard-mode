@@ -27,6 +27,16 @@
   :prefix "mallard-mode-"
   :group 'languages)
 
+(defcustom mallard-mode-comments-command "yelp-check comments"
+  "The command to display editorial comments in a Mallard document."
+  :type 'string
+  :group 'mallard)
+
+(defcustom mallard-mode-comments-buffer "*mallard-comments*"
+  "The name of the buffer for editorial comments in a Mallard document."
+  :type 'string
+  :group 'mallard)
+
 (defcustom mallard-mode-status-command "yelp-check status"
   "The command to display the status of a Mallard document."
   :type 'string
@@ -76,6 +86,17 @@ When BUFFER is not specified or is nil, use the current buffer."
   "Display the current version of mallard-mode in the minibuffer."
   (interactive)
   (message "mallard-mode %s" mallard-mode-version))
+
+(defun mallard-comments ()
+  "Display editorial comments in the currently edited Mallard document."
+  (interactive)
+  (message "Searching for editorial comments in the current buffer...")
+  (let* ((command (concat mallard-mode-comments-command " " (buffer-file-name)))
+         (output (mallard-run-command-on-buffer command)))
+    (unless (null output)
+      (if (zerop (length output))
+          (message "No editorial comments found.")
+        (display-message-or-buffer output mallard-mode-comments-buffer)))))
 
 (defun mallard-status ()
   "Display the status of the currently edited Mallard document."
