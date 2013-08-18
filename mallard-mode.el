@@ -30,6 +30,16 @@
   (expand-file-name "schema/schemas.xml" mallard-directory)
   "The location of the schema locating file for Mallard.")
 
+(defun mallard-buffer-saved-p (&optional buffer)
+  "Return t if BUFFER does not contain any unsaved changes.
+If it does, interactively prompt the user to save it.
+When BUFFER is not specified or is nil, use the current buffer."
+  (if (buffer-modified-p (or buffer (current-buffer)))
+      (cond ((string= (read-string "The buffer must be saved. Save now? (y/n) ") "y")
+             (save-buffer) t)
+            (t (message "Aborted.") nil))
+    t))
+
 (defun mallard-version ()
   "Display the current version of mallard-mode in the minibuffer."
   (interactive)
