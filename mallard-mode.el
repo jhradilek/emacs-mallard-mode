@@ -37,6 +37,16 @@
   :type 'string
   :group 'mallard)
 
+(defcustom mallard-mode-hrefs-command "yelp-check hrefs"
+  "The command to display broken external links in a Mallard document."
+  :type 'string
+  :group 'mallard)
+
+(defcustom mallard-mode-hrefs-buffer "*mallard-hrefs*"
+  "The name of the buffer for broken external links in a Mallard document."
+  :type 'string
+  :group 'mallard)
+
 (defcustom mallard-mode-status-command "yelp-check status"
   "The command to display the status of a Mallard document."
   :type 'string
@@ -97,6 +107,17 @@ When BUFFER is not specified or is nil, use the current buffer."
       (if (zerop (length output))
           (message "No editorial comments found.")
         (display-message-or-buffer output mallard-mode-comments-buffer)))))
+
+(defun mallard-hrefs ()
+  "Display broken external links in the currently edited Mallard document."
+  (interactive)
+  (message "Checking external links in the current buffer...")
+  (let* ((command (concat mallard-mode-hrefs-command " " (buffer-file-name)))
+         (output (mallard-run-command-on-buffer command)))
+    (unless (null output)
+      (if (zerop (length output))
+          (message "No broken external links found.")
+        (display-message-or-buffer output mallard-mode-hrefs-buffer)))))
 
 (defun mallard-status ()
   "Display the status of the currently edited Mallard document."
