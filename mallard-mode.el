@@ -40,6 +40,13 @@ When BUFFER is not specified or is nil, use the current buffer."
             (t (message "Aborted.") nil))
     t))
 
+(defun mallard-run-command-on-buffer (command &optional buffer)
+  "Ensure that BUFFER is saved and execute shell command COMMAND on it.
+Return the output of COMMAND as a string.
+When BUFFER is not specified or is nil, use the current buffer."
+  (when (mallard-buffer-saved-p (or buffer (current-buffer)))
+    (shell-command-to-string command)))
+
 (defun mallard-version ()
   "Display the current version of mallard-mode in the minibuffer."
   (interactive)
