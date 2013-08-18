@@ -22,6 +22,11 @@
 (defconst mallard-mode-version "0.1.1"
   "The version of mallard-mode.")
 
+(defgroup mallard nil
+  "The customization group for mallard-mode."
+  :prefix "mallard-mode-"
+  :group 'languages)
+
 (defvar mallard-directory
   (file-name-directory load-file-name)
   "The main directory of mallard-mode.")
