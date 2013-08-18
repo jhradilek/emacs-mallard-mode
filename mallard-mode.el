@@ -27,6 +27,16 @@
   :prefix "mallard-mode-"
   :group 'languages)
 
+(defcustom mallard-mode-validate-command "yelp-check validate"
+  "The command to validate a Mallard document."
+  :type 'string
+  :group 'mallard)
+
+(defcustom mallard-mode-validate-buffer "*mallard-validate*"
+  "The name of the buffer for validation errors in a Mallard document."
+  :type 'string
+  :group 'mallard)
+
 (defvar mallard-directory
   (file-name-directory load-file-name)
   "The main directory of mallard-mode.")
