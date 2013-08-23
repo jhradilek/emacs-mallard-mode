@@ -90,19 +90,23 @@ All commands in `nxml-mode-map' are inherited by this map.")
 
 (defun mallard-buffer-saved-p (&optional buffer)
   "Return t if BUFFER does not contain any unsaved changes.
+When BUFFER is not specified or is nil, use the current buffer."
+  (not (buffer-modified-p (or buffer (current-buffer)))))
+
+(defun mallard-interactive-buffer-saved-p (&optional buffer)
+  "Return t if BUFFER does not contain any unsaved changes.
 If it does, interactively prompt the user to save it.
 When BUFFER is not specified or is nil, use the current buffer."
-  (if (buffer-modified-p (or buffer (current-buffer)))
+  (or (mallard-buffer-saved-p buffer)
       (cond ((string= (read-string "The buffer must be saved. Save now? (y/n) ") "y")
              (save-buffer) t)
-            (t (message "Aborted.") nil))
-    t))
+            (t (message "Aborted.") nil))))
 
 (defun mallard-run-command-on-buffer (command &optional buffer)
   "Ensure that BUFFER is saved and execute shell command COMMAND on it.
 Return the output of COMMAND as a string.
 When BUFFER is not specified or is nil, use the current buffer."
-  (when (mallard-buffer-saved-p (or buffer (current-buffer)))
+  (when (mallard-interactive-buffer-saved-p buffer)
     (shell-command-to-string command)))
 
 (defun mallard-version ()
