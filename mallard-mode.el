@@ -26,48 +26,52 @@
 
 (defgroup mallard nil
   "The customization group for mallard-mode."
-  :prefix "mallard-mode-"
-  :group 'languages)
-
-(defcustom mallard-mode-comments-command "yelp-check comments"
-  "The command to display editorial comments in a Mallard document."
-  :type 'string
-  :group 'mallard)
+  :group 'languages
+  :prefix "mallard-mode-")
 
 (defcustom mallard-mode-comments-buffer "*mallard-comments*"
   "The name of the buffer for editorial comments in a Mallard document."
-  :type 'string
-  :group 'mallard)
+  :group 'mallard
+  :type 'string)
 
-(defcustom mallard-mode-hrefs-command "yelp-check hrefs"
-  "The command to display broken external links in a Mallard document."
-  :type 'string
-  :group 'mallard)
+(defcustom mallard-mode-comments-command '("yelp-check" "comments")
+  "The command to display editorial comments in a Mallard document."
+  :group 'mallard
+  :type '(list (string :tag "Command")
+               (string :tag "Arguments")))
 
 (defcustom mallard-mode-hrefs-buffer "*mallard-hrefs*"
   "The name of the buffer for broken external links in a Mallard document."
-  :type 'string
-  :group 'mallard)
+  :group 'mallard
+  :type 'string)
 
-(defcustom mallard-mode-status-command "yelp-check status"
-  "The command to display the status of a Mallard document."
-  :type 'string
-  :group 'mallard)
+(defcustom mallard-mode-hrefs-command '("yelp-check" "hrefs")
+  "The command to display broken external links in a Mallard document."
+  :group 'mallard
+  :type '(list (string :tag "Command")
+               (string :tag "Arguments")))
 
 (defcustom mallard-mode-status-buffer "*mallard-status*"
   "The name of the buffer for the status of a Mallard document."
-  :type 'string
-  :group 'mallard)
+  :group 'mallard
+  :type 'string)
 
-(defcustom mallard-mode-validate-command "yelp-check validate"
-  "The command to validate a Mallard document."
-  :type 'string
-  :group 'mallard)
+(defcustom mallard-mode-status-command '("yelp-check" "status")
+  "The command to display the status of a Mallard document."
+  :group 'mallard
+  :type '(list (string :tag "Command")
+               (string :tag "Arguments")))
 
 (defcustom mallard-mode-validate-buffer "*mallard-validate*"
   "The name of the buffer for validation errors in a Mallard document."
-  :type 'string
-  :group 'mallard)
+  :group 'mallard
+  :type 'string)
+
+(defcustom mallard-mode-validate-command '("yelp-check" "validate")
+  "The command to validate a Mallard document."
+  :group 'mallard
+  :type '(list (string :tag "Command")
+               (string :tag "Arguments")))
 
 (defvar mallard-mode-map
   (let ((map (make-sparse-keymap)))
@@ -108,7 +112,8 @@ Return the output of COMMAND as a string.
 When BUFFER is not specified or is nil, use the current buffer."
   (when (mallard-interactive-buffer-saved-p buffer)
     (shell-command-to-string
-     (concat command " " (buffer-file-name buffer)))))
+     (mapconcat 'identity
+                (append command (list (buffer-file-name buffer))) " "))))
 
 (defun mallard-version ()
   "Display the current version of mallard-mode in the minibuffer."
