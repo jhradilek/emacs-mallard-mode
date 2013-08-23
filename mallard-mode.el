@@ -107,7 +107,8 @@ When BUFFER is not specified or is nil, use the current buffer."
 Return the output of COMMAND as a string.
 When BUFFER is not specified or is nil, use the current buffer."
   (when (mallard-interactive-buffer-saved-p buffer)
-    (shell-command-to-string command)))
+    (shell-command-to-string
+     (concat command " " (buffer-file-name buffer)))))
 
 (defun mallard-version ()
   "Display the current version of mallard-mode in the minibuffer."
@@ -118,8 +119,7 @@ When BUFFER is not specified or is nil, use the current buffer."
   "Display editorial comments in the currently edited Mallard document."
   (interactive)
   (message "Searching for editorial comments in the current buffer...")
-  (let* ((command (concat mallard-mode-comments-command " " (buffer-file-name)))
-         (output (mallard-run-command-on-buffer command)))
+  (let ((output (mallard-run-command-on-buffer mallard-mode-comments-command)))
     (unless (null output)
       (if (zerop (length output))
           (message "No editorial comments found.")
@@ -129,8 +129,7 @@ When BUFFER is not specified or is nil, use the current buffer."
   "Display broken external links in the currently edited Mallard document."
   (interactive)
   (message "Checking external links in the current buffer...")
-  (let* ((command (concat mallard-mode-hrefs-command " " (buffer-file-name)))
-         (output (mallard-run-command-on-buffer command)))
+  (let ((output (mallard-run-command-on-buffer mallard-mode-hrefs-command)))
     (unless (null output)
       (if (zerop (length output))
           (message "No broken external links found.")
@@ -140,8 +139,7 @@ When BUFFER is not specified or is nil, use the current buffer."
   "Display the status of the currently edited Mallard document."
   (interactive)
   (message "Checking the status of the current buffer...")
-  (let* ((command (concat mallard-mode-status-command " " (buffer-file-name)))
-         (output (mallard-run-command-on-buffer command)))
+  (let ((output (mallard-run-command-on-buffer mallard-mode-status-command)))
     (unless (and (null output) (zerop (length output)))
       (display-message-or-buffer output mallard-mode-status-buffer))))
 
@@ -149,8 +147,7 @@ When BUFFER is not specified or is nil, use the current buffer."
   "Validate the currently edited Mallard document."
   (interactive)
   (message "Validating the current buffer...")
-  (let* ((command (concat mallard-mode-validate-command " " (buffer-file-name)))
-         (output (mallard-run-command-on-buffer command)))
+  (let ((output (mallard-run-command-on-buffer mallard-mode-validate-command)))
     (unless (null output)
       (if (zerop (length output))
           (message "No validation errors found.")
