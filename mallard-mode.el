@@ -4,7 +4,7 @@
 
 ;; Author: Jaromir Hradilek <jhradilek@gmail.com>
 ;; URL: https://github.com/jhradilek/emacs-mallard-mode
-;; Version: 0.2.0
+;; Version: 0.2.1
 ;; Keywords: XML Mallard
 
 ;; This file is NOT part of GNU Emacs.
@@ -21,7 +21,7 @@
 
 (require 'nxml-mode)
 
-(defconst mallard-mode-version "0.2.0"
+(defconst mallard-mode-version "0.2.1"
   "The version of mallard-mode.")
 
 (defgroup mallard nil
