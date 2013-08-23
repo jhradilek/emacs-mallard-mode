@@ -73,6 +73,14 @@
   :type '(list (string :tag "Command")
                (string :tag "Arguments")))
 
+(defvar mallard-directory
+  (file-name-directory load-file-name)
+  "The main directory of mallard-mode.")
+
+(defvar mallard-schemas
+  (expand-file-name "schema/schemas.xml" mallard-directory)
+  "The location of the schema locating file for Mallard.")
+
 (defvar mallard-mode-map
   (let ((map (make-sparse-keymap)))
     (set-keymap-parent map nxml-mode-map)
@@ -83,14 +91,6 @@
     map)
   "Keymap for mallard-mode.
 All commands in `nxml-mode-map' are inherited by this map.")
-
-(defvar mallard-directory
-  (file-name-directory load-file-name)
-  "The main directory of mallard-mode.")
-
-(defvar mallard-schemas
-  (expand-file-name "schema/schemas.xml" mallard-directory)
-  "The location of the schema locating file for Mallard.")
 
 (defun mallard-buffer-saved-p (&optional buffer)
   "Return t if BUFFER does not contain any unsaved changes.
@@ -114,11 +114,6 @@ When BUFFER is not specified or is nil, use the current buffer."
     (shell-command-to-string
      (mapconcat 'identity
                 (append command (list (buffer-file-name buffer))) " "))))
-
-(defun mallard-version ()
-  "Display the current version of mallard-mode in the minibuffer."
-  (interactive)
-  (message "mallard-mode %s" mallard-mode-version))
 
 (defun mallard-comments ()
   "Display editorial comments in the currently edited Mallard document."
@@ -157,6 +152,11 @@ When BUFFER is not specified or is nil, use the current buffer."
       (if (zerop (length output))
           (message "No validation errors found.")
         (display-message-or-buffer output mallard-mode-validate-buffer)))))
+
+(defun mallard-version ()
+  "Display the current version of mallard-mode in the minibuffer."
+  (interactive)
+  (message "mallard-mode %s" mallard-mode-version))
 
 ;;;###autoload
 (define-derived-mode mallard-mode nxml-mode "Mallard"
