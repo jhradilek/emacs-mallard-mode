@@ -97,6 +97,10 @@ All commands in `nxml-mode-map' are inherited by this map.")
 When BUFFER is not specified or is nil, use the current buffer."
   (not (buffer-modified-p (or buffer (current-buffer)))))
 
+(defun mallard-executable-exists-p (executable)
+  "Return t if EXECUTABLE is available in the system."
+  (when (executable-find executable) t))
+
 (defun mallard-interactive-buffer-saved-p (&optional buffer)
   "Return t if BUFFER does not contain any unsaved changes.
 If it does, interactively prompt the user to save it.
@@ -106,11 +110,19 @@ When BUFFER is not specified or is nil, use the current buffer."
              (save-buffer) t)
             (t (message "Aborted.") nil))))
 
+(defun mallard-verbose-executable-exists-p (executable)
+  "Return t if EXECUTABLE is available in the system.
+If it is not, display an error and return nil."
+  (or (mallard-executable-exists-p executable)
+      (progn
+        (message "Executable file `%s' is not installed." executable) nil)))
+
 (defun mallard-run-command-on-buffer (command &optional buffer)
   "Ensure that BUFFER is saved and execute shell command COMMAND on it.
 Return the output of COMMAND as a string.
 When BUFFER is not specified or is nil, use the current buffer."
-  (when (mallard-interactive-buffer-saved-p buffer)
+  (when (and (mallard-interactive-buffer-saved-p buffer)
+             (mallard-verbose-executable-exists-p (car command)))
     (shell-command-to-string
      (mapconcat 'identity
                 (append command (list (buffer-file-name buffer))) " "))))
