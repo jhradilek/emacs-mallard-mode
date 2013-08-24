@@ -2,7 +2,7 @@
 
 ## Description
 
-The **emacs-mallard-mode** repository provides **mallard-mode**, a major mode for editing [Mallard](http://projectmallard.org/) pages in Emacs.
+The **emacs-mallard-mode** repository provides **mallard-mode**, a major mode for editing [Mallard](http://projectmallard.org/) pages in Emacs. When enabled, **mallard-mode** loads the RELAX NG schema for Mallard, sets appropriate indentation rules, and enables automatic line wrapping. In addition, it provides a number of commands and key bindings that integrate it with the **yelp-check** utility in order to provide maximum comfort when editing Mallard pages.
 
 ## Installation
 
@@ -35,19 +35,19 @@ Then add the following lines to your **~/.emacs.d/init.el** file to enable it:
 
 ## Usage
 
-To use **mallard-mode**, either open a file with the **.page** or **.page.stub** extension, or enable it in the current buffer by running the following Emacs command:
+To use **mallard-mode**, either open a file with the **.page** or **.page.stub** file extension, or enable it for the current buffer by running the following Emacs command:
 
     M-x mallard-mode
 
 Refer to the [GNU Emacs manual](http://www.gnu.org/software/emacs/manual/html_node/emacs/Major-Modes.html) for more information on how to enable and configure major modes in Emacs.
 
-### Commands and Key Bindings
+### Available Commands and Key Bindings
 
-**mallard-mode** inherits all commands and key bindings from **nxml-mode**. In addition, it provides a number of additional commands and key bindings to make it easier to edit and validate Mallard pages. To run any of these commands in Emacs, use:
+**mallard-mode** inherits commands and key bindings from **nxml-mode**. In addition, it defines a number of commands and key bindings that integrate it with the **yelp-check** utility in order to provide maximum comfort when editing Mallard pages. To run any of these commands in Emacs, type:
 
     M-x COMMAND
 
-Note that some of the commands listed below require the **yelp-check** utility to be installed in the system.
+The available commands are as follows:
 
 <table>
   <tr>
@@ -82,13 +82,13 @@ Note that some of the commands listed below require the **yelp-check** utility t
   </tr>
 </table>
 
-### Customization Variables
+### Customizing mallard-mode
 
-**mallard-mode** provides a number of variables that allow you to customize its behavior. To edit these customization variables, run the following Emacs command:
+**mallard-mode** provides a number of customizable variables that allow you to adjust its behavior. To view or change these variables, run the following Emacs command:
 
     M-x customize-mode
 
-Refer to the [GNU Emacs manual](http://www.gnu.org/software/emacs/manual/html_node/emacs/Easy-Customization.html) for more information on how to customize major modes in Emacs.
+The available variables are as follows:
 
 <table>
   <tr>
@@ -128,6 +128,8 @@ Refer to the [GNU Emacs manual](http://www.gnu.org/software/emacs/manual/html_no
     <td>The command to validate the page. The default value is <code>yelp-check validate</code>.</td>
   </tr>
 </table>
+
+Refer to the [GNU Emacs manual](http://www.gnu.org/software/emacs/manual/html_node/emacs/Easy-Customization.html) for more information on how to customize major modes in Emacs.
 
 ## See Also
 
