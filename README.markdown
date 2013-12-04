@@ -33,6 +33,55 @@ Then add the following lines to your **~/.emacs.d/init.el** file to enable it:
     (add-to-list 'load-path "~/.emacs.d/mallard-mode")
     (require 'mallard-mode)
 
+## Configuration
+
+**mallard-mode** provides a number of customizable variables that allow you to adjust its behavior. To view or change these variables, run the following Emacs command:
+
+    M-x customize-mode
+
+The available variables are as follows:
+
+<table>
+  <tr>
+    <th>Variable</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td><code>mallard-mode-comments-buffer</code></td>
+    <td>The name of the buffer for editorial comments. The default value is <code>*mallard-comments*</code>.</td>
+  </tr>
+  <tr>
+    <td><code>mallard-mode-comments-command</code></td>
+    <td>The command to display editorial comments. The default value is <code>yelp-check comments</code>.</td>
+  </tr>
+  <tr>
+    <td><code>mallard-mode-hrefs-buffer</code></td>
+    <td>The name of the buffer for broken external links. The default value is <code>*mallard-hrefs*</code>.</td>
+  </tr>
+  <tr>
+    <td><code>mallard-mode-hrefs-command</code></td>
+    <td>The command to display broken external links. The default value is <code>yelp-check hrefs</code>.</td>
+  </tr>
+  <tr>
+    <td><code>mallard-mode-status-buffer</code></td>
+    <td>The name of the buffer for the page status. The default value is <code>*mallard-status*</code>.</td>
+  </tr>
+  <tr>
+    <td><code>mallard-mode-status-command</code></td>
+    <td>The command to display the page status. The default value is <code>yelp-check status</code>.</td>
+  </tr>
+  <tr>
+    <td><code>mallard-mode-validate-buffer</code></td>
+    <td>The name of the buffer for validation errors. The default value is <code>*mallard-validate*</code>.</td>
+  </tr>
+  <tr>
+    <td><code>mallard-mode-validate-command</code></td>
+    <td>The command to validate the page. The default value is <code>yelp-check validate</code>.</td>
+  </tr>
+</table>
+
+Refer to the [GNU Emacs manual](http://www.gnu.org/software/emacs/manual/html_node/emacs/Easy-Customization.html) for more information on how to customize major modes in Emacs.
+
 ## Usage
 
 To use **mallard-mode**, either open a file with the **.page** or **.page.stub** file extension, or enable it for the current buffer by running the following Emacs command:
@@ -81,55 +130,6 @@ The available commands are as follows:
     <td>Displays the current version of <strong>mallard-mode</strong> in the minibuffer.</td>
   </tr>
 </table>
-
-### Customizing mallard-mode
-
-**mallard-mode** provides a number of customizable variables that allow you to adjust its behavior. To view or change these variables, run the following Emacs command:
-
-    M-x customize-mode
-
-The available variables are as follows:
-
-<table>
-  <tr>
-    <th>Variable</th>
-    <th>Description</th>
-  </tr>
-  <tr>
-    <td><code>mallard-mode-comments-buffer</code></td>
-    <td>The name of the buffer for editorial comments. The default value is <code>*mallard-comments*</code>.</td>
-  </tr>
-  <tr>
-    <td><code>mallard-mode-comments-command</code></td>
-    <td>The command to display editorial comments. The default value is <code>yelp-check comments</code>.</td>
-  </tr>
-  <tr>
-    <td><code>mallard-mode-hrefs-buffer</code></td>
-    <td>The name of the buffer for broken external links. The default value is <code>*mallard-hrefs*</code>.</td>
-  </tr>
-  <tr>
-    <td><code>mallard-mode-hrefs-command</code></td>
-    <td>The command to display broken external links. The default value is <code>yelp-check hrefs</code>.</td>
-  </tr>
-  <tr>
-    <td><code>mallard-mode-status-buffer</code></td>
-    <td>The name of the buffer for the page status. The default value is <code>*mallard-status*</code>.</td>
-  </tr>
-  <tr>
-    <td><code>mallard-mode-status-command</code></td>
-    <td>The command to display the page status. The default value is <code>yelp-check status</code>.</td>
-  </tr>
-  <tr>
-    <td><code>mallard-mode-validate-buffer</code></td>
-    <td>The name of the buffer for validation errors. The default value is <code>*mallard-validate*</code>.</td>
-  </tr>
-  <tr>
-    <td><code>mallard-mode-validate-command</code></td>
-    <td>The command to validate the page. The default value is <code>yelp-check validate</code>.</td>
-  </tr>
-</table>
-
-Refer to the [GNU Emacs manual](http://www.gnu.org/software/emacs/manual/html_node/emacs/Easy-Customization.html) for more information on how to customize major modes in Emacs.
 
 ## See Also
 
