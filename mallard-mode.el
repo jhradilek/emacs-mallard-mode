@@ -199,7 +199,7 @@ editing Mallard pages. These commands are as follows:
 `M-x mallard-version' displays the version of this major mode.
 
 You can customize the behavior of some of these commands by running the
-`M-x customize-mode` command."
+`M-x customize-mode' command."
   (setq-default indent-tabs-mode nil)
   (setq-default tab-width 2)
   (setq-default fill-column 80)
