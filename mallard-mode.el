@@ -200,9 +200,9 @@ editing Mallard pages. These commands are as follows:
 
 You can customize the behavior of some of these commands by running the
 `M-x customize-mode' command."
-  (setq-default indent-tabs-mode nil)
-  (setq-default tab-width 2)
-  (setq-default fill-column 80)
+  (setq indent-tabs-mode nil)
+  (setq tab-width 2)
+  (setq fill-column 80)
   (turn-on-auto-fill))
 
 ;;;###autoload
