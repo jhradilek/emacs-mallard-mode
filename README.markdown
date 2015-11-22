@@ -12,7 +12,7 @@ To install **mallard-mode** by using the package.el package manager for Emacs, a
 
     (require 'package)
     (add-to-list 'package-archives
-                 '("melpa" . "http://melpa.milkbox.net/packages/"))
+                 '("melpa" . "https://melpa.org/packages/"))
     (package-initialize)
 
 Then run the following Emacs commands to install the **mallard-mode** package:
